@@ -1,0 +1,42 @@
+{
+  "name": "...",
+  "version": "0.0.0",
+  "description": "...",
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
+  "files": [
+    "dist"
+  ],
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "config": "chmod -R 744 .githooks && git config core.hooksPath .githooks",
+    "test": "jest --runInBand --silent --passWithNoTests",
+    "format": "prettier-standard \"src/**/*.ts\" --format && prettier-standard \"tests/**/*.ts\" --format",
+    "cleanup": "rm -rf dist",
+    "build": "rollup -c",
+    "preversion": "npm run test && npm run cleanup && npm run build && git add -A dist",
+    "postversion": "npm publish && git push && git push --tags"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/....git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "author": "...",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/jest": "^24.9.0",
+    "@types/node": "^12.12.47",
+    "jest": "^24.9.0",
+    "lint-staged": "^9.4.2",
+    "npm": "^6.14.5",
+    "prettier": "^1.19.1",
+    "prettier-standard": "^16.3.0",
+    "rollup-plugin-typescript2": "^0.27.1",
+    "ts-jest": "^24.1.0",
+    "typescript": "^3.9.5",
+    "rollup": "^2.18.0"
+  }
+}
